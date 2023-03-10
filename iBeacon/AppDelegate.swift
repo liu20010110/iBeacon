@@ -6,14 +6,23 @@
 //
 
 import UIKit
+import CoreLocation
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-
+    let locationManager = CLLocationManager()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge], completionHandler: { granted, error in
+              if granted {
+              } else {
+                 print("使用者不同意，不喜歡米花兒，哭哭!")
+              }
+           })
+        locationManager.delegate = self
         return true
     }
 
@@ -30,7 +39,31 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // If any sessions were discarded while the application was not running, this will be called shortly after application:didFinishLaunchingWithOptions.
         // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
     }
+}
 
+extension AppDelegate: CLLocationManagerDelegate {
+    func locationManager(_ manager: CLLocationManager, didEnterRegion region: CLRegion) {
+            guard region is CLBeaconRegion else { return }
 
+            let content = UNMutableNotificationContent()
+            content.title = "iBeacon Demo"
+            content.body = "You enter a region"
+            content.sound = .default
+
+            let request = UNNotificationRequest(identifier: "Demo", content: content, trigger: nil)
+            UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
+        }
+
+        func locationManager(_ manager: CLLocationManager, didExitRegion region: CLRegion) {
+            guard region is CLBeaconRegion else { return }
+
+            let content = UNMutableNotificationContent()
+            content.title = "iBeacon Demo"
+            content.body = "You exit a region"
+            content.sound = .default
+
+            let request = UNNotificationRequest(identifier: "Demo", content: content, trigger: nil)
+            UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
+        }
 }
 
