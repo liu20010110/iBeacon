@@ -10,7 +10,9 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MainVC" customModule="iBeacon" customModuleProvider="target">
             <connections>
+                <outlet property="iBeaconOPen" destination="eOi-YF-zEE" id="agm-aY-Ng0"/>
                 <outlet property="rssi" destination="3ab-5v-KIb" id="bug-yj-tCl"/>
+                <outlet property="uuid" destination="yCd-mh-37u" id="onF-sH-K6V"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -20,17 +22,57 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="RSSI:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3ab-5v-KIb">
-                    <rect key="frame" x="167.5" y="324" width="40.5" height="21"/>
+                    <rect key="frame" x="167.5" y="324" width="40" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yCd-mh-37u">
+                    <rect key="frame" x="166.5" y="165" width="42" height="21"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="21" id="9qU-i7-pca"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nKx-bG-VSe">
+                    <rect key="frame" x="150" y="380" width="75" height="35"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="35" id="ohb-d7-nnI"/>
+                    </constraints>
+                    <state key="normal" title="Button"/>
+                    <buttonConfiguration key="configuration" style="plain" title="搜尋"/>
+                    <connections>
+                        <action selector="searchOther:" destination="-1" eventType="touchUpInside" id="AAu-KT-bYo"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eOi-YF-zEE">
+                    <rect key="frame" x="150" y="502" width="75" height="35"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="35" id="enl-Mg-af7"/>
+                    </constraints>
+                    <state key="normal" title="Button"/>
+                    <buttonConfiguration key="configuration" style="plain" title="廣播"/>
+                    <connections>
+                        <action selector="iBeaconOp:" destination="-1" eventType="touchUpInside" id="o0u-OQ-jXt"/>
+                    </connections>
+                </button>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
+                <constraint firstItem="eOi-YF-zEE" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="502" id="5O6-Jt-uBA"/>
                 <constraint firstItem="3ab-5v-KIb" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="6pT-b8-z8g"/>
+                <constraint firstItem="yCd-mh-37u" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="7SH-o4-bnT"/>
+                <constraint firstItem="nKx-bG-VSe" firstAttribute="width" secondItem="fnl-2z-Ty3" secondAttribute="width" multiplier="0.2" id="Aj9-oI-VGa"/>
+                <constraint firstItem="yCd-mh-37u" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="165" id="CaU-mD-wQZ"/>
                 <constraint firstItem="3ab-5v-KIb" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" constant="1" id="GLM-ze-z11"/>
+                <constraint firstItem="eOi-YF-zEE" firstAttribute="width" secondItem="fnl-2z-Ty3" secondAttribute="width" multiplier="0.2" id="NMd-6Y-JzS"/>
+                <constraint firstItem="nKx-bG-VSe" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="380" id="Nyg-WY-ut1"/>
+                <constraint firstItem="yCd-mh-37u" firstAttribute="width" secondItem="fnl-2z-Ty3" secondAttribute="width" multiplier="0.112" id="Vlp-Fr-utY"/>
+                <constraint firstItem="nKx-bG-VSe" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="nHN-hm-oBU"/>
+                <constraint firstItem="eOi-YF-zEE" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="sl6-mk-QiL"/>
             </constraints>
             <point key="canvasLocation" x="122.40000000000001" y="20.239880059970016"/>
         </view>
